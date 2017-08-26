@@ -1,0 +1,128 @@
+﻿@model Antonyproject.Email
+
+    <!-- Banner -->
+    <!--
+        To use a video as your background, set data-video to the name of your video without
+        its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+        formats to work correctly.
+    -->
+
+
+    <section id="banner" >
+        <div class="inner">
+            <h1>Space File Saver</h1>
+            <p>A place to properly and professionally save your files from wherever you are in the world. Created by <a href="https://plus.google.com/u/0/118412472690596232982">Anthony Rhodes</a> and released under the Creative Genius of Anthony Rhodes III</a>.</p>
+            <a href="#four" class="button special scrolly">Get Started </a>
+        </div>
+    </section>
+    <video autoplay loop="">
+        <source src="@Url.Content("~/Images/Universe_Motion_Background_Loop.mp4")" type="video/mp4" />
+    
+        </video>        
+    
+
+
+    <!-- One -->
+    <section id="one" class="wrapper style2">
+        <div class="inner">
+            <div>
+                <div class="box">
+                    <div class="image fit">
+                        <img src="~/Images/akio_bako_anime_sunset_girl_clouds_103086_4000x2250.jpg"/>
+                    </div>
+                    <div class="content">
+                        <header class="align-center">
+                            <h2>Space File Saver</h2>
+                            <p>Saving your files from wherever you are in the world.</p>
+                        </header>
+                        <hr />
+                        <p> Space File Saver was created by me for one reason and one reason only, to save all of your files so you will not lose them. Have you ever looked at all the apps you bought or created, and some how lost them because you didnt have a good place to save them, or your device broke, or the memory device malfunctioned?  Well look no further, this is the site for you.  </p>
+                        <p> Space File Saver is a file saving website where you can save your software and files for later usage so it can be downloaded on another device. Trust that we will do our best to keep all your information safe and protect you from people sending virus via app and file saving. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Four -->
+    <section id="four" class="wrapper style3">
+        <div class="inner">
+
+            <header class="align-center">
+                <h2>Saving Files and Apps Like Never Before</h2>
+                <p>You are just one step away from having the abilty to save your files from anywhere in the world all you have to do is sign up or log in.</p>
+
+                <p><a href="http://localhost:51672/Account/Register" class="button alt">Sign up</a></p>
+            </header>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper">
+      @using (Html.BeginForm("SendEmail","Home", FormMethod.Post))
+      {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>EmailModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.subject, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.message, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.message, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send Email" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+      }
+
+          
+                            <div class="copyright">
+                                &copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>. Video <a href="http://coverr.co/">Coverr</a>.
+                            </div>
+                   
+                    
+</footer>
+                

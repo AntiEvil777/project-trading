@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Antonyproject.Models.UploadedFilesModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<footer id="footer" class="wrapper">
+    <h2>Index</h2>
+
+    @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileSize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContentType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileExtension)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileContent)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileExtension)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileContent)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.FileId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.FileId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.FileId })
+                </td>
+            </tr>
+        }
+
+        </table>*@
+
+
+
+    @using (Html.BeginForm("Index", "UploadedFiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="postedFile" />
+        <input type="submit" id="btnUpload" value="Upload" />
+    }
+    @using (Html.BeginForm("DownloadFile", "UploadedFiles", FormMethod.Post))
+    {
+        <input type="hidden" id="hfFileId" name="FileId" />
+        <input type="submit" id="btnDownload" value="Download" style="display:none" />
+    }
+    <hr />
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th style="width:50px">File ID</th>
+            <th style="width:120px">File Name</th>
+            <th style="width:80px">Download</th>
+        </tr>
+        @if (Model.Count() > 0)
+        {
+            foreach (var file in Model)
+            {
+                <tr>
+                    <td>@file.FileId</td>
+                    <td>@file.FileName</td>
+                    <td><a href="javascript:;" onclick="DownloadFile(@file.FileId)">Download</a> | @Html.ActionLink("Delete","DeleteFile",new { id = file.FileId })</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">&nbsp;</td>
+            </tr>
+        }
+    </table>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        function DownloadFile(fileId) {
+            $("#hfFileId").val(fileId);
+            $("#btnDownload")[0].click();
+        };
+    </script>
+  
+</footer>

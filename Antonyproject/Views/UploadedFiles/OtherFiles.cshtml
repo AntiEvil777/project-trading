@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Antonyproject.Models.UploadedFilesModels>
+
+@{
+    ViewBag.Title = "OtherFiles";
+}
+
+<h2>Other Files</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileExtension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileExtension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Download This", "DownloadSomeonesFile", new { id=item.FileId }) |
+     
+        </td>
+    </tr>
+}
+
+</table>
