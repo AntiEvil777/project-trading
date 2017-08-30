@@ -1,17 +1,18 @@
-﻿@model IEnumerable<Antonyproject.Models.UploadedFilesModels>
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<Antonyproject.Models.UploadedFilesModels>
 
 @{
     ViewBag.Title = "OtherFiles";
 }
 
-<h2>Other Files</h2>
 
+<h2>Other Files</h2> 
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FileName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FileSize)
         </th>
         <th>
@@ -27,14 +28,19 @@
             @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th></th>
-    </tr>
+    </tr>*@
+    <br />
+    <br />
+    <br />
+    <br />
+
 
 @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FileName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.FileSize)
         </td>
         <td>
@@ -48,12 +54,77 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Download This", "DownloadSomeonesFile", new { id=item.FileId }) |
+            
+            
+            @Html.ActionLink("Download This", "DownloadSomeonesFile", new { id = item.FileId }, new { id = "download_" + @item.FileId ,style = "display:none" })
+            <a href="#" onclick="downloadfile(@item.FileId, '@item.FileName')" class=" downloadlink">Download This</a>
+            
      
         </td>
     </tr>
 }
 
 </table>
+
+<script >
+
+    function downloadfile(fileid, filename) {
+
+        updatepoints(20)
+            .then(
+            function () {
+                document.getElementById("download_" + fileid).click()
+            })
+
+    }
+
+    var userstring
+
+    function setuserstring(username) {
+        userstring = username + "!" + " " + "(Points: " 
+    }
+
+    function setpoints(points) {
+        document.getElementById("points").innerHTML = userstring + points + ")"
+        var links = document.getElementsByClassName("downloadlink")
+        for (var i = 0; i < links.length; i++) {
+            if (points < 20) {
+                links[i].style.visibility = "hidden"
+            }
+            else {
+                links[i].style.visibility = "visible"
+
+            }
+
+        }
+    }
+
+    function pageinit() {
+        setuserstring('@User.Identity.GetUserName()')
+        updatepoints()
+    }
+
+
+    
+        function updatepoints(reservepoints)
+        {
+            if (!reservepoints) { reservepoints = 0}
+           
+            return $.ajax("/Api/points")
+                .then(function (data) {
+                        setpoints(data - reservepoints) 
+                    
+                    
+                    })
+
+        }
+
+        window.onload = pageinit
+
+
+
+
+
+</script>

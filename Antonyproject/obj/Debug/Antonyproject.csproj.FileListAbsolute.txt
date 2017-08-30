@@ -94,3 +94,9 @@ C:\Users\ola\Documents\Visual Studio 2017\Projects\Antonyproject\Antonyproject\b
 C:\Users\ola\Documents\Visual Studio 2017\Projects\Antonyproject\Antonyproject\obj\Debug\Antonyproject.dll
 C:\Users\ola\Documents\Visual Studio 2017\Projects\Antonyproject\Antonyproject\obj\Debug\Antonyproject.pdb
 C:\Users\ola\Documents\Visual Studio 2017\Projects\Antonyproject\Antonyproject\obj\Debug\Antonyproject.csprojResolveAssemblyReference.cache
+C:\Users\ola\documents\visual studio 2017\Projects\Antonyproject\Antonyproject\bin\System.Net.Http.Formatting.dll
+C:\Users\ola\documents\visual studio 2017\Projects\Antonyproject\Antonyproject\bin\System.Web.Http.dll
+C:\Users\ola\documents\visual studio 2017\Projects\Antonyproject\Antonyproject\bin\System.Web.Http.WebHost.dll
+C:\Users\ola\documents\visual studio 2017\Projects\Antonyproject\Antonyproject\bin\System.Net.Http.Formatting.xml
+C:\Users\ola\documents\visual studio 2017\Projects\Antonyproject\Antonyproject\bin\System.Web.Http.xml
+C:\Users\ola\documents\visual studio 2017\Projects\Antonyproject\Antonyproject\bin\System.Web.Http.WebHost.xml

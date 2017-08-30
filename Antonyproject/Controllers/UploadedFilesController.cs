@@ -246,11 +246,12 @@ namespace Antonyproject.Controllers
         [Authorize]
         public ActionResult DownloadSomeonesFile(int Id)
         {
+            
             int points = UserProfileModel.GetUserPoints();
             points -= 20;
             if (points < 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Not enough points. Sorry...>:(");
+                return View("Error");
             }
 
 
@@ -292,6 +293,12 @@ namespace Antonyproject.Controllers
 
             return File(bytes, contentType, fileName);
         }
+
+        public ActionResult Error()
+        {
+            return View();
+        }
+
 
 
 
